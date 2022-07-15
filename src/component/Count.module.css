@@ -1,0 +1,17 @@
+.screen {
+    background-color: #fff;
+    font-size: 3em;
+    padding: 50px 100px;
+    color: #161617;
+    border-radius: 10px 10px 0 0;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.numberRed {
+    color: red;
+}

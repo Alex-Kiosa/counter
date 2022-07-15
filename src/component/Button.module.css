@@ -1,0 +1,24 @@
+.button {
+    width: 49%;
+    padding: 10px 20px;
+    display: block;
+    outline: none;
+    border-width: 0;
+    font-size: 1.2em;
+    border-radius: 50rem;
+}
+
+.button:not(button:disabled) {
+    background-color: #6272dd;
+    color: #fff;
+}
+
+.button:hover:not(button:disabled){
+    background-color: #4652b4;
+    cursor: pointer;
+}
+
+.button:disabled{
+    background-color: #8a8a8a;
+    color: #fff;
+}

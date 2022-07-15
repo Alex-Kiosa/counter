@@ -1,5 +1,5 @@
 {
-  "name": "it-incubator-todolist-ts-04",
+  "name": "Counter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
