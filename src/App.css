@@ -14,6 +14,13 @@ body {
 }
 
 .app-inner {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.box {
     padding: 10px;
 
     background-color: #283699;

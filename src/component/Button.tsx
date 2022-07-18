@@ -3,15 +3,15 @@ import style from "./Button.module.css"
 
 type PropsType = {
     buttonName: string
-    onClickButton: () => void
-    disabled: boolean
+    onClick: () => void
+    disabled?: boolean
 }
 
 export const Button = (props: PropsType) => {
     return (
         <button
             className={style.button}
-            onClick={props.onClickButton}
+            onClick={props.onClick}
             disabled={props.disabled}
         >{props.buttonName}</button>
     )

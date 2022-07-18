@@ -1,40 +1,35 @@
 import React, {useState} from "react";
-import style from  "./Count.module.css"
+import style from "./Count.module.css"
 import {Button} from "./Button";
 
-export const Counter = () => {
+type CounterPropsType = {
+    count: number
+    minCount: number
+    maxCount: number
+    error: boolean
+    onclickInc: () => void
+    onclickReset: () => void
+    style: string
+}
 
-    const [count, setCount] = useState(0)
-
-    const minCount = 0;
-    const maxCount = 5;
-
-    const onclickHandlerInc = () => {
-        setCount(count + 1)
-    }
-
-    const onclickHandlerReset = () => {
-        setCount(0)
-    }
-
-    const counterStyles = count < maxCount ? style.screen : style.screen + " " + style.numberRed
+export const Counter: React.FC<CounterPropsType> = (props) => {
+    const counterStyles = props.count < props.maxCount ? style.screen : style.screen + " " + style.numberRed
 
     return (
-        <>
-            <div className={counterStyles}>{count}</div>
+        <div className={props.style}>
+            <div className={counterStyles}>{!props.error ? props.count : props.error}</div>
             <div className={style.buttons}>
                 <Button
                     buttonName={"inc"}
-                    onClickButton={onclickHandlerInc}
-                    disabled={count === maxCount}
+                    onClick={props.onclickInc}
+                    disabled={props.count === props.maxCount}
                 />
                 <Button
                     buttonName={"reset"}
-                    onClickButton={onclickHandlerReset}
-                    disabled={count === minCount}
+                    onClick={props.onclickReset}
+                    // disabled={props.count === props.minCount} - need to fix
                 />
             </div>
-
-        </>
+        </div>
     )
 }

@@ -1,0 +1,20 @@
+
+.settings {
+    height: 140px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.settingsItem {
+    margin-bottom: 10px;
+    display: flex;
+    color: #fff
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
