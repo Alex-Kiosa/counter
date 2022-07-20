@@ -11,6 +11,7 @@
 .button:not(button:disabled) {
     background-color: #6272dd;
     color: #fff;
+    cursor: pointer;
 }
 
 .button:hover:not(button:disabled){

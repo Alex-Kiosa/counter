@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./Settings.module.css";
 import {Button} from "./Button";
 import {Input} from "./Input";
@@ -7,10 +7,11 @@ type SettingsPropsType = {
     style: string
     minStart: number
     maxStart: number
-    error: boolean
+    error: string
+    editMode: boolean
     updateMaxStart: (value: number) => void
     updateMinStart: (value: number) => void
-    setSettings: () => void
+    updateSettings: () => void
 }
 
 export const SettingsDisplay: React.FC<SettingsPropsType> = (props) => {
@@ -27,8 +28,8 @@ export const SettingsDisplay: React.FC<SettingsPropsType> = (props) => {
             <div className={style.buttons}>
                 <Button
                     buttonName={"set"}
-                    onClick={props.setSettings}
-                    // disabled={props.maxStart < props.minStart}
+                    onClick={props.updateSettings}
+                    disabled={!props.editMode || !!props.error}
                 />
             </div>
         </div>

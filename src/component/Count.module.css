@@ -4,13 +4,17 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    font-size: 3em;
     color: #161617;
+    font-size: 1.5em;
     border-radius: 10px 10px 0 0;
 }
 
-.numberRed {
+.red{
     color: red;
+}
+
+.sizeS{
+    font-size: 3em;
 }
 
 .buttons {
