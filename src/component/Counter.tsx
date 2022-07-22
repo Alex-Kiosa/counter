@@ -4,12 +4,12 @@ import {Button} from "./Button";
 
 type CounterPropsType = {
     count: number
-    minCount: number
-    maxCount: number
+    minValue: number
+    maxValue: number
     error: string
     tooltip: string
-    onclickInc: () => void
-    onclickReset: () => void
+    counterInc: () => void
+    counterReset: () => void
     style: string
 }
 
@@ -21,7 +21,7 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
         titleStyles = style.screen
     } else {
         titleStyles =
-            props.maxCount > props.count ?
+            props.maxValue > props.count ?
                 `${style.screen} +  ${style.sizeS}` :
                 `${style.screen} + ${style.sizeS} + ${style.red}`
     }
@@ -34,12 +34,12 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
             <div className={style.buttons}>
                 <Button
                     buttonName={"inc"}
-                    onClick={props.onclickInc}
-                    disabled={props.count === props.maxCount || !!props.tooltip}
+                    onClick={props.counterInc}
+                    disabled={props.count === props.maxValue || !!props.tooltip}
                 />
                 <Button
                     buttonName={"reset"}
-                    onClick={props.onclickReset}
+                    onClick={props.counterReset}
                     disabled={!!props.tooltip}
                 />
             </div>

@@ -4,85 +4,90 @@ import {Counter} from "./component/Counter";
 import {SettingsDisplay} from "./component/SettingsDisplay";
 
 function App() {
-    const [minStart, setMinStart] = useState(0)
-    const [maxStart, setMaxStart] = useState(1)
-    const [count, setCount] = useState(minStart)
+    let savedMaxValue = 1
+    let savedMinValue = 0
+    const [maxValue, setMaxValue] = useState(1)
+    const [minValue, setMinValue] = useState(0)
+    const [count, setCount] = useState(minValue)
     const [error, setError] = useState("")
     const [tooltip, setTooltip] = useState("")
     const [editMode, setEditMode] = useState(false)
 
     useEffect(() => {
-        debugger
-        const newMinStart = localStorage.getItem("minStart")
-        const newMaxStart = localStorage.getItem("maxStart")
-        if (newMinStart) setMinStart(JSON.parse(newMinStart))
-        if (newMaxStart) setMinStart(JSON.parse(newMaxStart))
-    }, [])
-
-    debugger
+        const newMaxValue = localStorage.getItem("savedMaxValue")
+        if (newMaxValue) setMaxValue(JSON.parse(newMaxValue))
+    }, [savedMaxValue])
 
     useEffect(() => {
-        localStorage.setItem("minStart", JSON.stringify(minStart))
-        localStorage.setItem("maxStart", JSON.stringify(maxStart))
-    }, [minStart, maxStart])
+        const newMinValue = localStorage.getItem("savedMinValue")
+        if (newMinValue) setMinValue(JSON.parse(newMinValue))
+    }, [savedMinValue])
 
-    const updateMinStart = (value: number) => {
+    const updateMinValueHandler = (value: number) => {
         setEditMode(true)
-        setMinStart(value)
-        if (maxStart <= value) {
-            setError("inncorect value")
+        setMinValue(value)
+        if (maxValue <= value) {
+            setError("incorrect value")
         } else {
             setError("")
             setTooltip("enter values and press 'set'")
         }
     }
 
-    const updateMaxStart = (value: number) => {
+    const updateMaxValueHandler = (value: number) => {
         setEditMode(true)
-        setMaxStart(value)
-        if (minStart >= value) {
-            setError("inncorect value")
+        setMaxValue(value)
+        if (minValue >= value) {
+            setError("incorrect value")
         } else {
             setError("")
             setTooltip("enter values and press 'set'")
         }
     }
 
-    const onclickInc = () => {
-        setCount(count + 1)
-    }
+    const counterIncHandler = () => setCount(count + 1)
 
-    const onclickReset = () => {
-        setCount(minStart)
-    }
+    const counterResetHandler = () => setCount(minValue)
 
-    const updateSettings = () => {
-        setCount(minStart)
+    const updateSettingsHandler = () => {
+        savedMaxValue = maxValue
+        savedMinValue = minValue
+        localStorage.setItem("savedMaxValue", JSON.stringify(savedMaxValue))
+        localStorage.setItem("savedMinValue", JSON.stringify(savedMinValue))
+        setCount(minValue)
         setTooltip("")
         setEditMode(false)
+    }
+
+    const defaultSettingsHandler = () => {
+        localStorage.clear()
+        setMaxValue(savedMaxValue)
+        setMinValue(savedMinValue)
+        setCount(savedMinValue)
     }
 
     return (
         <div className="app">
             <div className="app-inner">
                 <SettingsDisplay
-                    updateSettings={updateSettings}
-                    minStart={minStart}
-                    maxStart={maxStart}
+                    updateSettings={updateSettingsHandler}
+                    minValue={minValue}
+                    maxValue={maxValue}
                     error={error}
                     editMode={editMode}
-                    updateMinStart={updateMinStart}
-                    updateMaxStart={updateMaxStart}
+                    updateMinValue={updateMinValueHandler}
+                    updateMaxValue={updateMaxValueHandler}
+                    defaultSettings={defaultSettingsHandler}
                     style={"box"}
                 />
                 <Counter
                     count={count}
-                    maxCount={maxStart}
-                    minCount={minStart}
+                    maxValue={maxValue}
+                    minValue={minValue}
                     error={error}
                     tooltip={tooltip}
-                    onclickInc={onclickInc}
-                    onclickReset={onclickReset}
+                    counterInc={counterIncHandler}
+                    counterReset={counterResetHandler}
                     style={"box"}
                 />
             </div>

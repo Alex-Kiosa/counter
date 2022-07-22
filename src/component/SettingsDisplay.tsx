@@ -5,13 +5,14 @@ import {Input} from "./Input";
 
 type SettingsPropsType = {
     style: string
-    minStart: number
-    maxStart: number
+    minValue: number
+    maxValue: number
     error: string
     editMode: boolean
-    updateMaxStart: (value: number) => void
-    updateMinStart: (value: number) => void
+    updateMaxValue: (value: number) => void
+    updateMinValue: (value: number) => void
     updateSettings: () => void
+    defaultSettings: () => void
 }
 
 export const SettingsDisplay: React.FC<SettingsPropsType> = (props) => {
@@ -20,10 +21,10 @@ export const SettingsDisplay: React.FC<SettingsPropsType> = (props) => {
             <div className={style.settings}>
                 <label className={style.settingsItem}>
                     Max value:
-                    <Input value={props.maxStart} onChange={props.updateMaxStart}/></label>
+                    <Input value={props.maxValue} onChange={props.updateMaxValue}/></label>
                 <label className={style.settingsItem}>
                     Min value:
-                    <Input value={props.minStart} onChange={props.updateMinStart}/></label>
+                    <Input value={props.minValue} onChange={props.updateMinValue}/></label>
             </div>
             <div className={style.buttons}>
                 <Button
@@ -31,6 +32,7 @@ export const SettingsDisplay: React.FC<SettingsPropsType> = (props) => {
                     onClick={props.updateSettings}
                     disabled={!props.editMode || !!props.error}
                 />
+                <Button buttonName={"default"} onClick={props.defaultSettings}/>
             </div>
         </div>
     )
