@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Settings.module.css";
-import {Button} from "./Button";
-import {Input} from "./Input";
+import {Button} from "../button/Button";
+import {Input} from "../input/Input";
 
 type SettingsPropsType = {
     style: string

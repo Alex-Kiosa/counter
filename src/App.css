@@ -4,24 +4,22 @@ body {
 
 .app {
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     color: #283699;
 }
 
 .app-inner {
     display: grid;
-    grid-template-columns: 300px 300px;
+    grid-template-columns: 360px 300px;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 }
 
 .box {
-    padding: 10px;
+    padding: 15px;
 
     background-color: #283699;
     border-radius: 10px;

@@ -1,20 +1,17 @@
-.screen {
+.settings {
     height: 140px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    color: #161617;
-    font-size: 1.5em;
-    border-radius: 10px 10px 0 0;
 }
 
-.red{
-    color: red;
-}
-
-.sizeS{
-    font-size: 3em;
+.settingsItem {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    color: #fff
 }
 
 .buttons {

@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {Counter} from "./component/Counter";
-import {SettingsDisplay} from "./component/SettingsDisplay";
+import {Counter} from "./component/counter/Counter";
+import {SettingsDisplay} from "./component/settings/SettingsDisplay";
 
 function App() {
-    let savedMaxValue = 1
-    let savedMinValue = 0
     const [maxValue, setMaxValue] = useState(1)
     const [minValue, setMinValue] = useState(0)
     const [count, setCount] = useState(minValue)
@@ -16,12 +14,12 @@ function App() {
     useEffect(() => {
         const newMaxValue = localStorage.getItem("savedMaxValue")
         if (newMaxValue) setMaxValue(JSON.parse(newMaxValue))
-    }, [savedMaxValue])
+    }, [])
 
     useEffect(() => {
         const newMinValue = localStorage.getItem("savedMinValue")
         if (newMinValue) setMinValue(JSON.parse(newMinValue))
-    }, [savedMinValue])
+    }, [])
 
     const updateMinValueHandler = (value: number) => {
         setEditMode(true)
@@ -50,10 +48,8 @@ function App() {
     const counterResetHandler = () => setCount(minValue)
 
     const updateSettingsHandler = () => {
-        savedMaxValue = maxValue
-        savedMinValue = minValue
-        localStorage.setItem("savedMaxValue", JSON.stringify(savedMaxValue))
-        localStorage.setItem("savedMinValue", JSON.stringify(savedMinValue))
+        localStorage.setItem("savedMaxValue", JSON.stringify(maxValue))
+        localStorage.setItem("savedMinValue", JSON.stringify(minValue))
         setCount(minValue)
         setTooltip("")
         setEditMode(false)
@@ -61,10 +57,12 @@ function App() {
 
     const defaultSettingsHandler = () => {
         localStorage.clear()
-        setMaxValue(savedMaxValue)
-        setMinValue(savedMinValue)
-        setCount(savedMinValue)
+        setMaxValue(1)
+        setMinValue(0)
+        setCount(0)
     }
+
+    // console.log(savedMinValue)
 
     return (
         <div className="app">

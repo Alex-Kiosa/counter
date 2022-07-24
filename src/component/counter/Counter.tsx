@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./Count.module.css"
-import {Button} from "./Button";
+import style from "./Counter.module.css"
+import {Button} from "../button/Button";
 
 type CounterPropsType = {
     count: number
@@ -16,14 +16,14 @@ type CounterPropsType = {
 export const Counter: React.FC<CounterPropsType> = (props) => {
     let titleStyles
     if (props.error) {
-        titleStyles = `${style.screen} ${style.red}`
+        titleStyles = `${style.title} ${style.red}`
     } else if (props.tooltip) {
-        titleStyles = style.screen
+        titleStyles = style.title
     } else {
         titleStyles =
             props.maxValue > props.count ?
-                `${style.screen} +  ${style.sizeS}` :
-                `${style.screen} + ${style.sizeS} + ${style.red}`
+                `${style.title} ${style.sizeS}` :
+                `${style.title} ${style.sizeS} ${style.red}`
     }
 
     const title = props.error || props.tooltip || props.count

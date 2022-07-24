@@ -1,0 +1,24 @@
+.title {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #161617;
+    font-size: 1.5em;
+    border-radius: 10px 10px 0 0;
+}
+
+.red{
+    color: red;
+}
+
+.sizeS{
+    font-size: 3em;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
